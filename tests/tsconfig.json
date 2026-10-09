@@ -1,0 +1,15 @@
+{
+  // Used only by `npm run typecheck`, never for building.
+  // It starts from the main tsconfig.json, then widens it to cover tests/ too,
+  // so a typo in a test is caught before the tests even run.
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    // Check only. Don't write any .js files.
+    "noEmit": true,
+    // Tests use Node features (reading files, starting the server).
+    "types": ["node"],
+    // The project root, so both src/ and tests/ fit inside.
+    "rootDir": ".."
+  },
+  "include": ["../src/**/*.ts", "./**/*.ts"]
+}

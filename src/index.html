@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FizzBuzz Terminal</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main id="terminal">
+    <div id="screen" aria-live="polite"></div>
+    <form id="input-line" autocomplete="off">
+      <label id="prompt" for="input">Enter a number (0 to quit): </label>
+      <input id="input" type="text" inputmode="numeric" spellcheck="false">
+    </form>
+    <button id="run" type="button" hidden>Run</button>
+  </main>
+
+  <script type="module" src="../dist/main.js"></script>
+</body>
+</html>

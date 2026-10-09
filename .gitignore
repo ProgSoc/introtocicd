@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Node.js (example app)
+node_modules/
+.DS_Store

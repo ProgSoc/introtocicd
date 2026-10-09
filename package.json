@@ -1,0 +1,25 @@
+{
+  "name": "fizzbuzz-terminal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "serve": "node scripts/serve.mjs",
+    "start": "npm run build --silent && npm run serve --silent",
+    "typecheck": "tsc -p tests",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "test": "npm run build --silent && vitest run",
+    "test:watch": "vitest",
+    "ci": "npm run typecheck && npm run lint && npm test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@types/node": "^26.6.4",
+    "jsdom": "^30.1.2",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}

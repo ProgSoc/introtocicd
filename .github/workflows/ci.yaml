@@ -1,0 +1,23 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      # Exact versions from package-lock.json
+      - run: npm ci
+
+      # Cheap checks first, so a typo fails in seconds, before the slower tests
+      - run: npm run typecheck
+      - run: npm run lint
+
+      # Builds, then runs the Vitest suite
+      - run: npm test

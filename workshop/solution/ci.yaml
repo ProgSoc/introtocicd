@@ -1,0 +1,79 @@
+# The example app's pipeline with continuous deployment added.
+# Copy this over .github/workflows/ci.yaml in your fork of
+# https://github.com/ProgSoc/introtocicd
+#
+# One-time setup first: in your fork, Settings > Pages > Build and deployment >
+# Source: "GitHub Actions".
+name: CI
+on: [push, pull_request]
+
+jobs:
+  # Gates (the CI part): unchanged from the original file.
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      # Exact versions from package-lock.json
+      - run: npm ci
+
+      # Cheap checks first, so a typo fails in seconds, before the slower tests
+      - run: npm run typecheck
+      - run: npm run lint
+
+      # Builds, then runs the Vitest suite
+      - run: npm test
+
+  # Transformations (the CD part): build, publish, deploy.
+  deploy:
+    # Only start once every gate in `check` has passed.
+    needs: check
+    # Pull requests get checked but never shipped. Only pushes to main deploy.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+
+    # Just enough access to publish to GitHub Pages, nothing more.
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    # Shows the live link on the run's summary page.
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      # Build: compile src/*.ts to dist/*.js
+      - run: npm run build
+
+      # The page at src/index.html loads ../dist/main.js, so keep both folders
+      # side by side, and send visitors at the site root to the page.
+      - name: Assemble the site
+        run: |
+          mkdir _site
+          cp -r src dist _site/
+          echo '<meta http-equiv="refresh" content="0; url=src/">' > _site/index.html
+
+      # Publish: package the site as a Pages artifact
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+      # Deploy: make that artifact the live site
+      - id: deployment
+        uses: actions/deploy-pages@v5
