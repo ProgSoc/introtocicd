@@ -64,6 +64,17 @@
   footer-right: "github.com/ProgSoc/introtocicd",
 )
 
+#gh.task-slide(
+  title: [What you'll need today],
+  tasks: (
+    (false, [A GitHub account], "github.com/signup"),
+    (false, [Git, set up so you can push to GitHub], "git --version"),
+    (false, [Node.js 24 LTS], "node --version"),
+    (false, [A text editor (VS Code is a good default)], "code.visualstudio.com"),
+    (false, [Your own fork of the workshop repo], "github.com/ProgSoc/introtocicd"),
+  ),
+)
+
 // =====================================================================
 // What is CI/CD
 // =====================================================================
