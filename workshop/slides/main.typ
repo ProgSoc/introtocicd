@@ -79,7 +79,25 @@
 // What is CI/CD
 // =====================================================================
 
-#gh.section-slide(number: "01", kicker: "10 min", title: [What is CI/CD?])
+#gh.section-slide(number: "01", kicker: "10 min", title: [Acronym time])
+
+#gh.table-slide(
+  title: [Three terms, one abbreviation],
+  headers: ("Term", "What it means"),
+  columns: (1.6fr, 3fr),
+  value-colors: (
+    "integration": "accent",
+    "delivery": "warning",
+    "deployment": "warning",
+    "CI/CD": "success",
+  ),
+  rows: (
+    ("integration", "Every change is merged often and checked automatically"),
+    ("delivery", "Main is always releasable; a person decides when to ship"),
+    ("deployment", "Every change that passes the checks ships automatically"),
+    ("CI/CD", "The umbrella term for the tools and automation behind all three"),
+  ),
+)
 
 #gh.alert-slide(
   title: [Code breaks when it meets other code],
@@ -92,7 +110,7 @@
 
 // The chef analogy from Grokking Continuous Delivery, chapter 1, retold.
 // (Say the book's actual definition of CI out loud on this slide.)
-#gh.content-slide(title: [Continuous integration (CI): the pasta sauce analogy])[
+#gh.content-slide(title: [Continuous integration (CI)])[
   #context {
     let ctx = gh._gh-state.get()
     let rule = (bottom: 1pt + ctx.palette.border-muted)
@@ -120,24 +138,6 @@
   title: [You're doing continuous delivery (CD) when…],
   left: ("1 · Always shippable", "accent", "any commit", [You could safely release any commit on main, today. *How?* CI: every change has already passed the checks.]),
   right: ("2 · Shipping is easy", "warning", "1 click", [Releasing is as simple as pressing a button. *How?* Automate building, publishing and deploying.]),
-)
-
-#gh.table-slide(
-  title: [Three terms, one abbreviation],
-  headers: ("Term", "What it means"),
-  columns: (1.6fr, 3fr),
-  value-colors: (
-    "integration": "accent",
-    "delivery": "warning",
-    "deployment": "warning",
-    "CI/CD": "success",
-  ),
-  rows: (
-    ("integration", "Every change is merged often and checked automatically"),
-    ("delivery", "Main is always releasable; a person decides when to ship"),
-    ("deployment", "Every change that passes the checks ships automatically"),
-    ("CI/CD", "The umbrella term for the tools and automation behind all three"),
-  ),
 )
 
 // =====================================================================
