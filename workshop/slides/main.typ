@@ -479,6 +479,6 @@
 
 #gh.closing-slide(
   kicker: "## Thanks for coming",
-  title: [Questions?],
+  title: [Pizza time #text(font: "Noto Color Emoji")[🍕]],
   links: ("github.com/ProgSoc/introtocicd", "Quests.md"),
 )
