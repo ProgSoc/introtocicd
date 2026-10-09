@@ -82,7 +82,7 @@
 #gh.section-slide(number: "01", kicker: "", title: [Acronym time])
 
 #gh.table-slide(
-  title: [Three terms, one abbreviation],
+  title: [What does CI/CD stand for?],
   headers: ("Term", "What it means"),
   columns: (1.6fr, 3fr),
   value-colors: (
@@ -100,11 +100,11 @@
 )
 
 #gh.alert-slide(
-  title: [Code breaks when it meets other code],
+  title: [Why do we use CI/CD practises?],
   alerts: (
-    ("Works on my machine", "warning", [You forgot to commit one file. Your laptop is fine. Everyone else's build is broken.]),
+    ("It works on my machine", "warning", [You forgot to commit one file. works for you, broken for everyone else]),
     ("Who broke main?", "warning", [Ten changes landed today. One of them is bad. Nobody knows which.]),
-    ("Release day panic", "danger", [Shipping is a 20-step checklist that only one person remembers.]),
+    ("How do we release again?", "danger", [You end up having one person who rolls out new releases blocking your progress]),
   ),
 )
 
@@ -134,11 +134,30 @@
   }
 ]
 
-#gh.two-col-slide(
-  title: [You're doing continuous delivery (CD) when…],
-  left: ("1 · Always shippable", "accent", "any commit", [You could safely release any commit on main, today. *How?* CI: every change has already passed the checks.]),
-  right: ("2 · Shipping is easy", "warning", "1 click", [Releasing is as simple as pressing a button. *How?* Automate building, publishing and deploying.]),
-)
+// Our own continuation of Holly's story (the book's analogy stops at CI).
+#gh.content-slide(title: [Continuous delivery (CD)])[
+  #context {
+    let ctx = gh._gh-state.get()
+    let rule = (bottom: 1pt + ctx.palette.border-muted)
+    let arrow = text(fill: ctx.palette.fg-subtle)[→]
+    let head(emoji, body) = text(size: ctx.ts.small, weight: 600, fill: ctx.palette.fg-muted)[#text(font: "Noto Color Emoji", emoji) #body]
+    set text(size: ctx.ts.small)
+    grid(
+      columns: (1fr, auto, 1fr),
+      column-gutter: 20pt,
+      inset: (y: 15pt),
+      stroke: (x, y) => if y < 4 { rule },
+      align: (left + horizon, center + horizon, left + horizon),
+      head("🍴", [Holly now runs a restaurant]), [], head("💻", [Your team ships software]),
+      [Her sauce is always finished and tasted, ready to plate], arrow, [#transform[Always shippable:] every commit on main has passed the checks],
+      [Plating and serving is a practised routine, not a scramble], arrow, [#transform[Shipping is easy:] build, publish and deploy are automated],
+      [She decides when each table gets its food], arrow, [*Continuous delivery:* a person chooses when to release],
+      [Every dish goes out the moment it's ready], arrow, [*Continuous deployment:* every green change ships automatically],
+    )
+    v(10pt)
+    text(font: "JetBrains Mono", size: ctx.ts.micro, fill: ctx.palette.fg-subtle)[Our own continuation of Holly's story]
+  }
+]
 
 // =====================================================================
 // Why bother
@@ -461,7 +480,7 @@
 // Wrap-up
 // =====================================================================
 
-#gh.content-slide(title: [Five things to take home])[
+#gh.content-slide(title: [Key Takeaways])[
   + #gate[CI:] merge small changes often, and verify every one automatically.
   + #transform[CD:] main is always shippable, and shipping takes one button.
   + *Gates first:* lint and test, then build, publish and deploy.
