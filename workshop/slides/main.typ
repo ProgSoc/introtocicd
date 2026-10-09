@@ -442,8 +442,6 @@
 // Recommended reading
 // =====================================================================
 
-#gh.section-slide(number: "06", kicker: "Keep learning", title: [Recommended reading])
-
 // One book per row: cover on the left, details on the right.
 #let book(cover, title, byline, body) = context {
   let ctx = gh._gh-state.get()
@@ -461,19 +459,19 @@
   )
 }
 
-#gh.content-slide(title: [Two books worth your time])[
+#gh.content-slide(title: [Recommended reading])[
   #book(
     "covers/grokking-continuous-delivery.jpg",
     [Grokking Continuous Delivery],
     "Christie Wilson · Manning, 2022",
-    [Beginner-friendly and illustrated. Today followed chapter 2; chapters 4–6 go deeper on linting and testing, and later chapters cover building and deploying.],
+    [A very beginner friendly book that explains stuff using analogies and images. I highly recommend this book, in this workshop we just covered chapter 2 but I'd recommend reading ahead for the extra content covered.],
   )
   #v(20pt)
   #book(
     "covers/continuous-delivery.jpg",
     [Continuous Delivery],
     "Jez Humble & David Farley · Addison-Wesley, 2010",
-    [The book that defined continuous delivery and the deployment pipeline. Denser, but the classic reference once you're running pipelines of your own.],
+    [One of the most influential books on this topic, I have heard great things about this book but haven't read it yet, might be worth reading if you finish Grokking Continuous Delivery.],
   )
 ]
 
