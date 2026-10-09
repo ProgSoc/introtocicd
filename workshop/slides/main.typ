@@ -141,7 +141,7 @@
       align: (left + horizon, center + horizon, left + horizon),
       head("🍴", [Holly now runs a restaurant]), [], head("💻", [Your team ships software]),
       [Her sauce is always finished and tasted, ready to plate], arrow, [#transform[Always shippable:] every commit on main has passed the checks],
-      [Plating and serving are automated routes her waiters carry out], arrow, [#transform[Shipping is easy:] build, publish and deploy are automated],
+      [Plating and serving are automated routines her waiters carry out], arrow, [#transform[Shipping is easy:] build, publish and deploy are automated],
       [She decides when each table gets its food], arrow, [*Continuous delivery:* a person chooses when to release],
       [Every dish goes out the moment it's ready], arrow, [*Continuous deployment:* every green change ships automatically],
     )
@@ -211,8 +211,14 @@
   )
 ]
 
+#gh.two-col-slide(
+  title: [Gates check code; transformations change it],
+  left: ("Gates · the CI part", "accent", "pass / fail", [*Lint, test.* Code goes in, a verdict comes out. A fail stops the pipeline.]),
+  right: ("Transformations · the CD part", "warning", "code → app", [*Build, publish, deploy.* Code goes in, something new comes out. Gates always run first.]),
+)
+
 #gh.table-slide(
-  title: [Five tasks you'll see almost everywhere],
+  title: [Common Task Types],
   headers: ("Task", "Kind", "What it does"),
   columns: (1fr, 1fr, 4fr),
   value-colors: (
@@ -229,12 +235,6 @@
     ("publish", "transform", "Puts the build somewhere others can get it"),
     ("deploy", "transform", "Updates the running app to the new version"),
   ),
-)
-
-#gh.two-col-slide(
-  title: [Gates check code; transformations change it],
-  left: ("Gates · the CI part", "accent", "pass / fail", [*Lint, test.* Code goes in, a verdict comes out. A fail stops the pipeline.]),
-  right: ("Transformations · the CD part", "warning", "code → app", [*Build, publish, deploy.* Code goes in, something new comes out. Gates always run first.]),
 )
 
 #gh.table-slide(
