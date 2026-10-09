@@ -65,12 +65,12 @@
 )
 
 #gh.task-slide(
-  title: [What you'll need today],
+  title: [Workshop Requirements],
   tasks: (
     (false, [A GitHub account], "github.com/signup"),
     (false, [Git, set up so you can push to GitHub], "git --version"),
     (false, [Node.js 24 LTS], "node --version"),
-    (false, [A text editor (VS Code is a good default)], "code.visualstudio.com"),
+    (false, [A text editor], "code.visualstudio.com"),
     (false, [Your own fork of the workshop repo], "github.com/ProgSoc/introtocicd"),
   ),
 )
@@ -79,7 +79,7 @@
 // What is CI/CD
 // =====================================================================
 
-#gh.section-slide(number: "01", kicker: "10 min", title: [Acronym time])
+#gh.section-slide(number: "01", kicker: "", title: [Acronym time])
 
 #gh.table-slide(
   title: [Three terms, one abbreviation],
@@ -144,7 +144,7 @@
 // Why bother
 // =====================================================================
 
-#gh.section-slide(number: "02", kicker: "10 min", title: [Why bother?])
+#gh.section-slide(number: "02", kicker: "", title: [Why bother?])
 
 #gh.ordered-slide(
   title: [Topher runs the pipeline by hand],
@@ -176,7 +176,7 @@
 // Anatomy of a pipeline
 // =====================================================================
 
-#gh.section-slide(number: "03", kicker: "15 min", title: [Anatomy of a pipeline])
+#gh.section-slide(number: "03", kicker: "", title: [Anatomy of a pipeline])
 
 #gh.content-slide(title: [Tasks are functions; pipelines call them])[
   #grid(
@@ -247,7 +247,7 @@
 // The example app
 // =====================================================================
 
-#gh.section-slide(number: "04", kicker: "15 min", title: [Our example app])
+#gh.section-slide(number: "04", kicker: "", title: [Our example app])
 
 #gh.content-slide(title: [Meet FizzBuzz Terminal])[
   #grid(
@@ -415,7 +415,7 @@
 // Hands-on
 // =====================================================================
 
-#gh.section-slide(number: "05", kicker: "Hands-on · 25 min", title: [Break the build])
+#gh.section-slide(number: "05", kicker: "", title: [Break the build])
 
 #gh.task-slide(
   title: [Break it → push → watch it go red → fix it],
