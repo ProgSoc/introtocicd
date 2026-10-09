@@ -237,20 +237,6 @@
   ),
 )
 
-#gh.table-slide(
-  title: [Same ideas, different names],
-  headers: ("Idea", "GitHub Actions", "You may also hear"),
-  columns: (1fr, 2.2fr, 1.8fr),
-  value-colors: (:),
-  rows: (
-    ("pipeline", "workflow (.github/workflows/*.yaml)", "workflow, build"),
-    ("task", "job, made of steps", "stage, step"),
-    ("trigger", "on: push, pull_request", "webhook, event"),
-    ("passes", "green tick on the commit", "\"CI is green\""),
-    ("breaks", "red cross on the commit", "\"CI is red\""),
-  ),
-)
-
 // =====================================================================
 // The example app
 // =====================================================================
