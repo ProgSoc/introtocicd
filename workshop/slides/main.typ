@@ -141,7 +141,7 @@
       align: (left + horizon, center + horizon, left + horizon),
       head("🍴", [Holly now runs a restaurant]), [], head("💻", [Your team ships software]),
       [Her sauce is always finished and tasted, ready to plate], arrow, [#transform[Always shippable:] every commit on main has passed the checks],
-      [Plating and serving is a practised routine, not a scramble], arrow, [#transform[Shipping is easy:] build, publish and deploy are automated],
+      [Plating and serving are automated routes her waiters carry out], arrow, [#transform[Shipping is easy:] build, publish and deploy are automated],
       [She decides when each table gets its food], arrow, [*Continuous delivery:* a person chooses when to release],
       [Every dish goes out the moment it's ready], arrow, [*Continuous deployment:* every green change ships automatically],
     )
@@ -154,10 +154,10 @@
 // Why bother
 // =====================================================================
 
-#gh.section-slide(number: "02", kicker: "", title: [Why bother?])
+#gh.section-slide(number: "02", kicker: "", title: [Why use CI/CD?])
 
 #gh.alert-slide(
-  title: [Why do we use CI/CD practises?],
+  title: [Common Issues],
   alerts: (
     ("It works on my machine", "warning", [You forgot to commit one file. works for you, broken for everyone else]),
     ("Who broke main?", "warning", [Ten changes landed today. One of them is bad. Nobody knows which.]),
@@ -165,22 +165,11 @@
   ),
 )
 
-#gh.ordered-slide(
-  title: [Topher runs the pipeline by hand],
-  items: (
-    ([Once a day], [It breaks. Several people changed code yesterday. Whose change was it?]),
-    ([On every change], [Teammates tell him when they push. Someone forgets.]),
-    ([On git notifications], [The team grows. Running the pipeline becomes his whole job.]),
-    ([With a webhook], [Every push triggers the pipeline, which emails whoever broke it. *GitHub Actions is this, ready-made.*]),
-  ),
-)
-
-#gh.content-slide(title: [What a pipeline buys you])[
+#gh.content-slide(title: [How to implement it])[
   #set list(spacing: 22pt)
-  - *Fast feedback.* Find out in minutes, not at demo time, that a change broke something.
-  - *Obvious culprits.* One run per change, so a red run points at one small change.
-  - *Confidence.* Main stays green, so anyone can ship it without crossing their fingers.
-  - *No boring toil.* Robots run the checks humans forget, every single time.
+  - *Run the checks before you push.* Contributors run the tests and linter locally first (`npm run ci`).
+  - *Automate them on every push.* The pipeline runs the same checks, so everyone finds out when something breaks.
+  - *Keep each push small.* A failure then points straight at your change, not at a day's worth of work.
 ]
 
 #gh.alert-slide(
