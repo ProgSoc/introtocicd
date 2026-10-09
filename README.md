@@ -9,6 +9,7 @@ No previous CI/CD experience needed.
 
 | | |
 |---|---|
+| [`workshop/slides/main.typ`](workshop/slides/main.typ) | **The slides**, written in Typst. Build the PDF with the command under [Building the slides](#building-the-slides) |
 | [`workshop/guide.md`](workshop/guide.md) | **Start here.** A step-by-step guide covering the concepts, setup, exercises and deployment |
 | [`workshop/solution/ci.yaml`](workshop/solution/ci.yaml) | The finished pipeline, with the deploy job added |
 | [`Quests.md`](Quests.md) | More break-it challenges for after the workshop |
@@ -29,6 +30,16 @@ No previous CI/CD experience needed.
 4. Our example app and its pipeline (15 min)
 5. Hands-on: break the build (25 min)
 6. Adding CD: deploy to GitHub Pages (15 min)
+
+## Building the slides
+
+The slides are written in [Typst](https://typst.app) with the [gh-minimal-slides](https://typst.app/universe/package/gh-minimal-slides) theme (dark mode). Typst downloads the theme and its dependency, Touying, automatically the first time you compile. The theme uses the Inter and JetBrains Mono fonts.
+
+```bash
+typst compile workshop/slides/main.typ workshop/slides/intro-to-cicd.pdf
+```
+
+Use `typst watch` instead of `typst compile` to rebuild on every save. The PDF is a build output, so git ignores it.
 
 ---
 
