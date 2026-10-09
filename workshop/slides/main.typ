@@ -79,11 +79,31 @@
   ),
 )
 
-#gh.quote-slide(
-  title: [Continuous integration (CI)],
-  body: [“The process of combining code changes *frequently*, with each change *verified* on check-in.”],
-  attribution: "— Christie Wilson, Grokking Continuous Delivery (Manning, 2022)",
-)
+// The chef analogy from Grokking Continuous Delivery, chapter 1, retold.
+// (Say the book's actual definition of CI out loud on this slide.)
+#gh.content-slide(title: [Continuous integration (CI): the pasta sauce analogy])[
+  #context {
+    let ctx = gh._gh-state.get()
+    let rule = (bottom: 1pt + ctx.palette.border-muted)
+    let arrow = text(fill: ctx.palette.fg-subtle)[→]
+    let head(emoji, body) = text(size: ctx.ts.small, weight: 600, fill: ctx.palette.fg-muted)[#text(font: "Noto Color Emoji", emoji) #body]
+    set text(size: ctx.ts.small)
+    grid(
+      columns: (1fr, auto, 1fr),
+      column-gutter: 20pt,
+      inset: (y: 15pt),
+      stroke: (x, y) => if y < 4 { rule },
+      align: (left + horizon, center + horizon, left + horizon),
+      head("🍝", [Holly the chef makes pasta sauce]), [], head("💻", [Your team builds software]),
+      [She starts with raw ingredients: onions, garlic, tomatoes, spices], arrow, [Everyone's code changes],
+      [She adds them one at a time, in the right order and amounts], arrow, [#gate[Integrate:] merge small changes often],
+      [She takes a quick taste after every new ingredient], arrow, [#gate[Verify:] run the checks on every push],
+      [If she only tasted at the end, it'd be too late to fix], arrow, [One giant merge the night before the deadline],
+    )
+    v(10pt)
+    text(font: "JetBrains Mono", size: ctx.ts.micro, fill: ctx.palette.fg-subtle)[Analogy from Grokking Continuous Delivery, ch. 1 (Christie Wilson, Manning 2022)]
+  }
+]
 
 #gh.two-col-slide(
   title: [You're doing continuous delivery (CD) when…],
