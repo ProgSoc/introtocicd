@@ -99,15 +99,6 @@
   ),
 )
 
-#gh.alert-slide(
-  title: [Why do we use CI/CD practises?],
-  alerts: (
-    ("It works on my machine", "warning", [You forgot to commit one file. works for you, broken for everyone else]),
-    ("Who broke main?", "warning", [Ten changes landed today. One of them is bad. Nobody knows which.]),
-    ("How do we release again?", "danger", [You end up having one person who rolls out new releases blocking your progress]),
-  ),
-)
-
 // The chef analogy from Grokking Continuous Delivery, chapter 1, retold.
 // (Say the book's actual definition of CI out loud on this slide.)
 #gh.content-slide(title: [Continuous integration (CI)])[
@@ -164,6 +155,15 @@
 // =====================================================================
 
 #gh.section-slide(number: "02", kicker: "", title: [Why bother?])
+
+#gh.alert-slide(
+  title: [Why do we use CI/CD practises?],
+  alerts: (
+    ("It works on my machine", "warning", [You forgot to commit one file. works for you, broken for everyone else]),
+    ("Who broke main?", "warning", [Ten changes landed today. One of them is bad. Nobody knows which.]),
+    ("How do we release again?", "danger", [You end up having one person who rolls out new releases blocking your progress]),
+  ),
+)
 
 #gh.ordered-slide(
   title: [Topher runs the pipeline by hand],
